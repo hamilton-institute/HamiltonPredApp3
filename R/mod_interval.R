@@ -282,12 +282,12 @@ mod_interval_server <- function(input, output, session, forecast_data, extra_poi
   date_box <- reactive({
     if (length(input$countryC) <= total) {
       shiny_data %>%
-        filter(time == today) %>%
-        filter(Country %in% input$countryC)
+        dplyr::filter(time == today) %>%
+        dplyr::filter(Country %in% input$countryC)
     }else {
       shiny_data %>%
-        filter(time == today) %>%
-        filter(Country %in% input$countryC[1:total])
+        dplyr::filter(time == today) %>%
+        dplyr::filter(Country %in% input$countryC[1:total])
     }
   })
   #---------------------------------------------------------------------
@@ -296,8 +296,8 @@ mod_interval_server <- function(input, output, session, forecast_data, extra_poi
     country_sel <- shiny_data$Country
     country_sel <- country_sel[!country_sel %in% input$countryC]
     sample_sel <- shiny_data %>%
-      filter(time == today) %>%
-      filter(Country %in% country_sel)
+      dplyr::filter(time == today) %>%
+      dplyr::filter(Country %in% country_sel)
     sample_sel[order(sample_sel$cases,  decreasing = TRUE), ]
   })
   #---------------------------------------------------------------------

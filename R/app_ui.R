@@ -37,7 +37,7 @@ app_ui <- function(request) {
       ),
 
       #---
-      sidebar = dashboardSidebar(
+      sidebar = bs4Dash::bs4DashSidebar(
         skin = "light",
         status = "primary",
         brandColor = "dark",
@@ -45,7 +45,6 @@ app_ui <- function(request) {
         bs4Dash::bs4SidebarMenu(
           bs4Dash::bs4SidebarMenuItem(
             "Forecast",
-            tabName = "forecast",
             icon = "laptop",
             startExpanded = TRUE,
             bs4Dash::bs4SidebarMenuSubItem(
@@ -71,49 +70,48 @@ app_ui <- function(request) {
           ),
           bs4Dash::bs4SidebarMenuItem(
             "Dendrogram",
-            tabName = "dendrogram",
+            tabName = "dendogram",
             icon = "fas fa-project-diagram"
           ),
           # ----------------------------------------
-          tags$hr(),
-          tags$div(
-            style="text-align:center",
-            tags$p("Additional Information")),
-          tags$hr(),
+
+          bs4Dash::bs4SidebarHeader("Additional Information"),
+
           # ----------------------------------------
           bs4Dash::bs4SidebarMenuItem(
             "Model Validation",
-            tabName = "validation", 
+            tabName = "validation",
             icon = "bar-chart-o"
           )
-        )
+         )
       ),
 
       #---
-      body = dashboardBody(
+      body = bs4Dash::bs4DashBody(
         hamiltonThemes::use_bs4Dash_distill_theme(), # <-- use the theme
-        bs4TabItems(
-          bs4TabItem(
+        withMathJax(),
+        bs4Dash::bs4TabItems(
+          bs4Dash::bs4TabItem(
             tabName = "plots",
             mod_interval_ui("interval_ui_1")
           ),
-          bs4TabItem(
+          bs4Dash::bs4TabItem(
             tabName = "plots2",
             mod_point_ui("point_ui_1")
           ),
-          bs4TabItem(
+          bs4Dash::bs4TabItem(
             tabName = "table",
             mod_table_ui("table_ui_1")
           ),
-          bs4TabItem(
+          bs4Dash::bs4TabItem(
             tabName = "ar_comp",
             mod_ar_comp_ui("ar_comp_ui_1")
           ),
-          bs4TabItem(
+          bs4Dash::bs4TabItem(
             tabName = "dendogram",
             mod_dendogram_ui("dendogram_ui_1")
           ),
-          bs4TabItem(
+          bs4Dash::bs4TabItem(
             tabName = "validation",
             mod_validation_ui("validation_ui_1")
           )
@@ -121,7 +119,7 @@ app_ui <- function(request) {
       ),
 
       #---
-      hamiltonThemes::bs4dash_distill_footer()
+      footer = hamiltonThemes::bs4dash_distill_footer()
     )
   )
 }

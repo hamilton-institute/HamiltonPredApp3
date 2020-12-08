@@ -55,3 +55,28 @@ get_description_forecast <- function(){
   "since the error accumulates from one time step to the other.</p>"
   ))
 }
+
+get_description_ar <- function() {
+  paste0("The autoregressive component in the model has a direct relationship ",
+  "with the pandemic behaviour over time for each country. It is directly propor",
+  "tional to the natural logarithm of the daily number of cases, given what happ",
+  "ened in the previous day. Therefore, it is sensitive to changes and can be ",
+  "helpful detecting possible waves.")
+}
+
+get_description_dendogram <- function(){
+  paste0("Dendrogram representing the hierarchical clustering of countries based ",
+  "on their estimated autoregressive parameters. The clustering used Ward's method ",
+  "and pairwise dynamic time warp distances between the countries' time series. ",
+  "Each of 10 clusters is represented with a different colour. Country abbreviations: ",
+  "BSES = Bonaire, Saint Eustatius and Saba; IC Japan = Cases on an international ",
+  "conveyance - Japan; CAE = Central African Republic; DRC = Democratic Republic ",
+  "of the Congo; NMI = Northern Mariana Islands; SKN = Saint Kitts and Nevis; SVG ",
+  "= Saint Vincent and the Grenadines; STP = São Tomé and Príncipe; TC Islands = ",
+  "Turks and Caicos Islands; UAE = United Arab Emirates.")
+}
+
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
