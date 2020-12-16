@@ -1,5 +1,5 @@
 ## code to prepare `shiny_data` dataset goes here
-load("data-raw/RData/shiny_data.RData")
+load("data/shiny_data.rda")
 shiny_data$Country <- as.factor(gsub(pattern = "_", replacement = " ",
                                      shiny_data$Country))
 shiny_data$Indicator <- as.factor(shiny_data$Indicator)

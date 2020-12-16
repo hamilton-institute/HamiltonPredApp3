@@ -168,7 +168,7 @@ mod_interval_ui <- function(id){
 #' interval Server Function
 #'
 #' @noRd 
-mod_interval_server <- function(input, output, session, forecast_data, extra_points){
+mod_interval_server <- function(input, output, session){
   ns <- session$ns
  
   output$forecast_int_ui <- renderUI({
