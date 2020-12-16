@@ -25,7 +25,7 @@ jobs:
       - name: Install libs
         run: |
           sudo apt-get update
-          sudo apt-get install libgit2-dev jags
+          sudo apt-get install libgit2-dev jags libglu1-mesa-dev
       - uses: r-lib/actions/setup-r@master
       - name: Install packages
         run: |
